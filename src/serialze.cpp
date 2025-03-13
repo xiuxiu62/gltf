@@ -1,5 +1,5 @@
-#include "private/fs.hpp"
-#include "public/gltf.hpp"
+#include "fs.hpp"
+#include "gltf.hpp"
 #include <cstring>
 #include <fstream>
 #include <iomanip>

@@ -1,4 +1,4 @@
-#include "private/base_64.hpp"
+#include "base_64.hpp"
 
 namespace gltf {
 

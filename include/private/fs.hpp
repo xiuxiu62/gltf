@@ -1,7 +1,9 @@
 #pragma once
 
-#include "common/types.hpp"
+#include "types.hpp"
 #include <string>
+
+namespace gltf {
 
 inline std::string parent_directory(const std::string &path) {
     usize pos = path.find_last_of("/\\");
@@ -25,3 +27,5 @@ inline std::string get_file_extension(const std::string &path) {
     size_t pos = path.find_last_of(".");
     return (pos == std::string::npos) ? "" : path.substr(pos);
 }
+
+}; // namespace gltf

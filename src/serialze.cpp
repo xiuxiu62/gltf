@@ -7,6 +7,8 @@
 #include <iostream>
 #include <sstream>
 
+namespace gltf {
+
 std::string create_json_string(const std::string &str) {
     std::ostringstream oss;
     oss << "\"";
@@ -36,8 +38,6 @@ std::string create_json_string(const std::string &str) {
     oss << "\"";
     return oss.str();
 }
-
-namespace gltf {
 
 std::string Model::generate_json(bool for_glb) {
     std::ostringstream json;

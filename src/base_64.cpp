@@ -1,5 +1,7 @@
 #include "private/base_64.hpp"
 
+namespace gltf {
+
 const char base64_chars[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 const u8 decode_table[256] = {
     64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64,
@@ -91,3 +93,5 @@ std::vector<u8> decode_base_64(const std::string &input) {
 
     return output;
 }
+
+}; // namespace gltf

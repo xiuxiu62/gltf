@@ -1,7 +1,7 @@
 #pragma once
 
-#include "private/common/types.hpp"
 #include "private/json.h"
+#include "private/types.hpp"
 #include <map>
 #include <stdint.h>
 #include <string>

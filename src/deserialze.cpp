@@ -1,7 +1,8 @@
+#include "json.h"
+
 #include "base_64.hpp"
 #include "fs.hpp"
 #include "gltf.hpp"
-#include "json.h"
 #include <fstream>
 #include <iostream>
 #include <sstream>

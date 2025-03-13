@@ -22,14 +22,11 @@ elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
   add_compile_definitions(RELEASE)
 endif()
 
-# Gather source files
 file(GLOB_RECURSE SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c" "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 file(GLOB_RECURSE HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h" "${CMAKE_CURRENT_SOURCE_DIR}/src/*.hpp")
 
-# Create library target
 add_library(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 
-# Set include directories
 target_include_directories(${PROJECT_NAME} 
   PUBLIC 
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -38,7 +35,6 @@ target_include_directories(${PROJECT_NAME}
     ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
-# # Setup installation
 # install(
 #   TARGETS ${PROJECT_NAME}
 #   EXPORT ${PROJECT_NAME}Targets
@@ -48,21 +44,18 @@ target_include_directories(${PROJECT_NAME}
 #   INCLUDES DESTINATION include
 # )
 
-# # Install header files
 # install(
 #   DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/
 #   DESTINATION include
 #   FILES_MATCHING PATTERN "*.h" PATTERN "*.hpp"
 # )
 
-# # Export the targets
 # install(
 #   EXPORT ${PROJECT_NAME}Targets
 #   FILE ${PROJECT_NAME}Targets.cmake
 #   DESTINATION lib/cmake/${PROJECT_NAME}
 # )
 
-# # Create a ConfigVersion.cmake file
 # include(CMakePackageConfigHelpers)
 # write_basic_package_version_file(
 #   "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
@@ -70,14 +63,12 @@ target_include_directories(${PROJECT_NAME}
 #   COMPATIBILITY SameMajorVersion
 # )
 
-# # Create the Config.cmake file
 # configure_file(
 #   "${CMAKE_CURRENT_SOURCE_DIR}/cmake/${PROJECT_NAME}Config.cmake.in"
 #   "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
 #   @ONLY
 # )
 
-# # Install the Config.cmake and ConfigVersion.cmake
 # install(
 #   FILES
 #     "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
@@ -85,7 +76,6 @@ target_include_directories(${PROJECT_NAME}
 #   DESTINATION lib/cmake/${PROJECT_NAME}
 # )
 
-# # Optionally add an example executable
 # option(BUILD_EXAMPLES "Build example applications" OFF)
 # if(BUILD_EXAMPLES)
 #   add_subdirectory(examples)

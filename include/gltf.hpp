@@ -1,11 +1,13 @@
 #pragma once
 
-#include "json.hpp"
 #include "types.hpp"
 #include <map>
 #include <stdint.h>
 #include <string>
 #include <vector>
+
+struct json_value_s;
+struct json_object_s;
 
 namespace gltf {
 

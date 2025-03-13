@@ -68,8 +68,6 @@
 extern "C" {
 #endif
 
-namespace gltf {
-
 struct json_value_s;
 struct json_parse_result_s;
 
@@ -382,8 +380,6 @@ typedef struct json_parse_result_s {
 
 } json_parse_result_t;
 
-}; // namespace gltf
-
 #ifdef __cplusplus
 } /* extern "C". */
 #endif
@@ -452,8 +448,6 @@ typedef struct json_parse_result_s {
 /* switch specified' warning. */
 #pragma warning(disable : 5045)
 #endif
-
-namespace gltf {
 
 struct json_parse_state_s {
     const char *src;
@@ -3279,8 +3273,6 @@ void *json_write_pretty(const struct json_value_s *value, const char *indent, co
 
     return data;
 }
-
-}; // namespace gltf
 
 #if defined(__clang__)
 #pragma clang diagnostic pop

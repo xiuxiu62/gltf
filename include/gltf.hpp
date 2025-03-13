@@ -221,12 +221,17 @@ struct Model {
     // Base path for resolving external files
     std::string base_path;
 
-    static Model load_from_file(bool &success, const std::string &path);
+    static Model load(bool &success, const std::string &path);
     static Model load_from_memory(bool &success, const u8 *data, usize length);
+    bool save(const std::string &path);
+    bool save_as_gltf(const std::string &path, bool embed_buffers);
+    bool save_as_glb(const std::string &path);
     // void destroy();
 
   private:
     bool parse(const json_value_s *root);
+    std::string generate_json(bool for_glb);
+
     bool load_buffers();
 
     bool parse_buffers(const json_object_s *json);
@@ -241,8 +246,6 @@ struct Model {
     bool parse_nodes(const json_object_s *json);
     bool parse_scenes(const json_object_s *json);
     bool parse_animations(const json_object_s *json);
-
-    std::vector<u8> decode_base_64(const std::string &input);
 
     static std::string get_string(const json_value_s *value);
     static i32 get_int(const json_value_s *value);

@@ -27,28 +27,13 @@ file(GLOB_RECURSE HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h" "${CMAKE_CURRENT
 
 add_library(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 
-# Only expose gltf.hpp publicly
+# Include directories setup
 target_include_directories(${PROJECT_NAME} 
   PRIVATE 
     ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/private
     ${CMAKE_CURRENT_SOURCE_DIR}/src
-)
-
-# Generate a public header with only gltf.hpp
-set(PUBLIC_HEADERS "${CMAKE_CURRENT_BINARY_DIR}/include/gltf")
-file(MAKE_DIRECTORY "${PUBLIC_HEADERS}")
-
-# Copy only gltf.hpp to the public include directory
-configure_file(
-  "${CMAKE_CURRENT_SOURCE_DIR}/include/gltf.hpp"
-  "${PUBLIC_HEADERS}/gltf.hpp"
-  COPYONLY
-)
-
-# Add the public include directory
-target_include_directories(${PROJECT_NAME} 
-  PUBLIC 
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>
+  PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/public>
     $<INSTALL_INTERFACE:include>
 )
-

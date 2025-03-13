@@ -1,4 +1,4 @@
-#include "base_64.hpp"
+#include "private/base_64.hpp"
 
 const char base64_chars[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 const u8 decode_table[256] = {

@@ -1,8 +1,7 @@
 #pragma once
 
-#include "collections/fixed_array.hpp"
-#include "common/types.hpp"
-#include "json.h"
+#include "private/common/types.hpp"
+#include "private/json.h"
 #include <map>
 #include <stdint.h>
 #include <string>
@@ -188,21 +187,6 @@ struct Animation {
     std::vector<AnimationChannel> channels;
     std::string name;
 };
-
-// struct ModelTemp {
-//     FixedArray<Buffer> buffers;
-//     FixedArray<BufferView> buffer_views;
-//     FixedArray<Accessor> accessors;
-//     FixedArray<Image> images;
-//     FixedArray<Sampler> samplers;
-//     FixedArray<Texture> textures;
-//     FixedArray<Material> materials;
-//     FixedArray<Mesh> meshes;
-//     FixedArray<Skin> skins;
-//     FixedArray<Node> nodes;
-//     FixedArray<Scene> scenes;
-//     FixedArray<Animation> animations;
-// };
 
 struct Model {
     std::vector<Buffer> buffers;

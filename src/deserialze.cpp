@@ -1,7 +1,7 @@
-#include "base_64.hpp"
-#include "fs.hpp"
-#include "gltf.hpp"
-#include "json.h"
+#include "private/base_64.hpp"
+#include "private/fs.hpp"
+#include "private/json.h"
+#include "public/gltf.hpp"
 #include <fstream>
 #include <iostream>
 #include <sstream>

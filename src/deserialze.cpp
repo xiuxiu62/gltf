@@ -1,5 +1,4 @@
 #include "base_64.hpp"
-// #include "collections/fixed_array.hpp"
 #include "fs.hpp"
 #include "gltf.hpp"
 #include "json.h"
@@ -7,6 +6,8 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+
+namespace gltf {
 
 std::string Model::get_string(const json_value_s *value) {
     if (!value || value->type != json_type_string) return "";
@@ -1258,3 +1259,5 @@ bool Model::parse_animations(const json_object_s *json) {
 
     return true;
 }
+
+}; // namespace gltf

@@ -37,6 +37,8 @@ std::string create_json_string(const std::string &str) {
     return oss.str();
 }
 
+namespace gltf {
+
 std::string Model::generate_json(bool for_glb) {
     std::ostringstream json;
     json << "{";
@@ -649,3 +651,5 @@ bool Model::save_as_glb(const std::string &path) {
 
     return true;
 }
+
+}; // namespace gltf

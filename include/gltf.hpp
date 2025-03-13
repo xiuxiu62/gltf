@@ -8,6 +8,8 @@
 #include <string>
 #include <vector>
 
+namespace gltf {
+
 struct Vec2 {
     f32 x, y;
 };
@@ -252,3 +254,5 @@ struct Model {
     static f32 get_float(const json_value_s *value);
     static bool get_bool(const json_value_s *value);
 };
+
+}; // namespace gltf

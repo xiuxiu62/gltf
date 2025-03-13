@@ -27,56 +27,28 @@ file(GLOB_RECURSE HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h" "${CMAKE_CURRENT
 
 add_library(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 
+# Only expose gltf.hpp publicly
 target_include_directories(${PROJECT_NAME} 
-  PUBLIC 
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include>
-  PRIVATE
+  PRIVATE 
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
-# install(
-#   TARGETS ${PROJECT_NAME}
-#   EXPORT ${PROJECT_NAME}Targets
-#   LIBRARY DESTINATION lib
-#   ARCHIVE DESTINATION lib
-#   RUNTIME DESTINATION bin
-#   INCLUDES DESTINATION include
-# )
+# Generate a public header with only gltf.hpp
+set(PUBLIC_HEADERS "${CMAKE_CURRENT_BINARY_DIR}/include/gltf")
+file(MAKE_DIRECTORY "${PUBLIC_HEADERS}")
 
-# install(
-#   DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/
-#   DESTINATION include
-#   FILES_MATCHING PATTERN "*.h" PATTERN "*.hpp"
-# )
+# Copy only gltf.hpp to the public include directory
+configure_file(
+  "${CMAKE_CURRENT_SOURCE_DIR}/include/gltf.hpp"
+  "${PUBLIC_HEADERS}/gltf.hpp"
+  COPYONLY
+)
 
-# install(
-#   EXPORT ${PROJECT_NAME}Targets
-#   FILE ${PROJECT_NAME}Targets.cmake
-#   DESTINATION lib/cmake/${PROJECT_NAME}
-# )
+# Add the public include directory
+target_include_directories(${PROJECT_NAME} 
+  PUBLIC 
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>
+    $<INSTALL_INTERFACE:include>
+)
 
-# include(CMakePackageConfigHelpers)
-# write_basic_package_version_file(
-#   "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
-#   VERSION ${PROJECT_VERSION}
-#   COMPATIBILITY SameMajorVersion
-# )
-
-# configure_file(
-#   "${CMAKE_CURRENT_SOURCE_DIR}/cmake/${PROJECT_NAME}Config.cmake.in"
-#   "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
-#   @ONLY
-# )
-
-# install(
-#   FILES
-#     "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
-#     "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
-#   DESTINATION lib/cmake/${PROJECT_NAME}
-# )
-
-# option(BUILD_EXAMPLES "Build example applications" OFF)
-# if(BUILD_EXAMPLES)
-#   add_subdirectory(examples)
-# endif()
